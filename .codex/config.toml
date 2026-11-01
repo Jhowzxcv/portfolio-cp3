@@ -1,0 +1,4 @@
+# Configuração opcional de documentação, sem credenciais.
+# O ambiente desta execução já disponibilizou Context7; este arquivo permite reproduzir o acesso.
+[mcp_servers.context7]
+url = "https://mcp.context7.com/mcp"

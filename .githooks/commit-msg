@@ -1,0 +1,5 @@
+#!/bin/sh
+if ! head -1 "$1" | grep -Eq '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore)(\([a-zA-Z0-9_-]+\))?: .+'; then
+  echo 'Use Conventional Commits: feat: descreve a mudança'
+  exit 1
+fi
