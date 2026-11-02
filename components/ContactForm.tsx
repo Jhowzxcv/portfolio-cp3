@@ -9,7 +9,7 @@ export function ContactForm() {
   const [sending, setSending] = useState(false);
   const [feedback, setFeedback] = useState<{ message: string; ok: boolean } | null>(null);
   const lock = useRef(false);
-  const submissionId = useRef<string | null>(null);
+  const submission = useRef<{ id: string; payload: string } | null>(null);
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (lock.current) return;
@@ -24,12 +24,15 @@ export function ContactForm() {
     setErrors({});
     lock.current = true;
     setSending(true);
-    submissionId.current ||= crypto.randomUUID();
+    const payload = JSON.stringify(parsed.data);
+    if (!submission.current || submission.current.payload !== payload) {
+      submission.current = { id: crypto.randomUUID(), payload };
+    }
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Idempotency-Key': submissionId.current },
-        body: JSON.stringify(parsed.data),
+        headers: { 'Content-Type': 'application/json', 'Idempotency-Key': submission.current.id },
+        body: payload,
         signal: AbortSignal.timeout(30000),
       });
       const body = await response.json();
@@ -39,7 +42,7 @@ export function ContactForm() {
       }
       setFeedback({ ok: true, message: body.message });
       form.reset();
-      submissionId.current = null;
+      submission.current = null;
     } catch (error) {
       setFeedback({
         ok: false,

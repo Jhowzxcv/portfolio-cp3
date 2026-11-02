@@ -6,8 +6,14 @@ export default defineConfig({
   reporter: [['list'], ['html', { open: 'never' }]],
   use: { baseURL: 'http://127.0.0.1:3000', trace: 'retain-on-failure' },
   projects: [
-    { name: 'desktop', use: { ...devices['Desktop Chrome'], channel: 'msedge' } },
-    { name: 'mobile', use: { ...devices['Pixel 7'], channel: 'msedge' } },
+    {
+      name: 'desktop',
+      use: { ...devices['Desktop Chrome'], ...(!process.env.CI ? { channel: 'msedge' } : {}) },
+    },
+    {
+      name: 'mobile',
+      use: { ...devices['Pixel 7'], ...(!process.env.CI ? { channel: 'msedge' } : {}) },
+    },
   ],
   webServer: {
     command: 'npm run start',
