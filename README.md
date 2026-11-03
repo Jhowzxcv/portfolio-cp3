@@ -5,7 +5,7 @@ Portfólio pessoal em React com Next.js, projetos vindos da API pública do GitH
 ## Links e entrega
 
 - GitHub: https://github.com/Jhowzxcv/portfolio-cp3
-- Produção: consulte [ENTREGA.md](docs/ENTREGA.md).
+- Produção: https://portfolio-cp3-nu.vercel.app
 - O que ainda depende do dono: [SUA-PARTE.md](docs/SUA-PARTE.md).
 - Roteiro do vídeo: [ROTEIRO-VIDEO.md](docs/ROTEIRO-VIDEO.md).
 - Requisitos e situação de cada item: [REQUISITOS.md](docs/REQUISITOS.md).
