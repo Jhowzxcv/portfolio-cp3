@@ -6,7 +6,7 @@ Nome: Jhonathan dos Santos Dourado
 
 GitHub: https://github.com/Jhowzxcv/portfolio-cp3
 
-Vercel: [aguardando URL confirmada de produção]
+Vercel: https://portfolio-cp3-nu.vercel.app
 
 Vídeo no YouTube (não listado): [cole aqui o link da sua gravação]
 

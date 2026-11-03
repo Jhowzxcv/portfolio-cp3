@@ -25,7 +25,26 @@ Medição no endereço `http://127.0.0.1:3000`, com o build de produção, Chrom
 | Boas práticas      | 100              |
 | SEO                | 100              |
 
-Cumulative Layout Shift medido: 0. Esta é uma medição real local e não garante a mesma nota em toda rede ou no deploy remoto. O relatório HTML está entre os arquivos de entrega, fora do repositório. O resultado de produção será registrado após o deploy.
+Cumulative Layout Shift medido: 0. Esta é uma medição real local e não garante a mesma nota em toda rede. Os relatórios HTML e JSON estão entre os arquivos de entrega, fora do repositório.
+
+### Medição na Vercel
+
+URL pública: https://portfolio-cp3-nu.vercel.app/ — Lighthouse 13.6.0, medido em 03/11/2026 às 23:01, horário de São Paulo, Chrome headless, perfil mobile padrão.
+
+| Categoria          | Nota em produção |
+| ------------------ | ---------------- |
+| Performance mobile | 98               |
+| Acessibilidade     | 100              |
+| Boas práticas      | 100              |
+| SEO                | 100              |
+
+FCP e LCP: 1,1 s; CLS: 0. A medição atende ao mínimo de 80 do enunciado. Banco/e-mail ainda não estavam configurados; o relatório cobre a página pública, com projetos reais do GitHub.
+
+### Publicação e CI
+
+Deploy inicial concluído na Vercel com estado READY. O GitHub foi conectado automaticamente ao projeto `portfolio-cp3`. A home pública retornou HTTP 200 e `/api/projects` retornou 14 repositórios públicos após a criação deste repositório.
+
+O workflow remoto também concluiu com sucesso: https://github.com/Jhowzxcv/portfolio-cp3/actions/runs/41757814745. Foram executados instalação limpa, lint, tipos, Vitest, build e Playwright em Linux/Chromium.
 
 ## Cobertura dos cenários
 
