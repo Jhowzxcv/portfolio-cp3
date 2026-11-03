@@ -5,6 +5,7 @@ import { ProjectsProvider } from '@/hooks/useProjects';
 import './globals.css';
 
 export const metadata: Metadata = {
+  icons: { icon: '/icon.svg' },
   title: {
     default: 'Jhonathan Dourado — Desenvolvedor full stack',
     template: '%s | Jhonathan Dourado',

@@ -490,7 +490,7 @@ h2 > span {
   font-family: monospace;
   font-size: 8px;
   letter-spacing: 1px;
-  opacity: 0.7;
+  opacity: 1;
 }
 .cover-symbol {
   position: absolute;
