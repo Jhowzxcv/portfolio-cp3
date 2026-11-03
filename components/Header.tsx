@@ -21,7 +21,7 @@ export function Header() {
   }
   return (
     <header className="header container">
-      <Link href="/" className="wordmark" aria-label="Jhonathan Dourado, início">
+      <Link href="/" className="wordmark" aria-label="jd_ — Jhonathan Dourado, início">
         jd<span>_</span>
       </Link>
       <nav aria-label="Navegação principal">
