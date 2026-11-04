@@ -23,7 +23,7 @@ export function Dashboard({ email }: { email: string }) {
       <div className="dashboard-heading">
         <div>
           <span className="eyebrow">ÁREA DO DONO / {email}</span>
-          <h1>Seu portfólio, por dentro.</h1>
+          <h1>Dashboard</h1>
         </div>
         <button type="button" className="button secondary" onClick={logout} disabled={saving}>
           <LogOut size={16} /> Sair
@@ -49,8 +49,7 @@ export function Dashboard({ email }: { email: string }) {
         ) : data?.messages.length === 0 ? (
           <div className="empty-state">
             <Mail size={28} />
-            <h3>Uma caixa de entrada tranquila.</h3>
-            <p>As mensagens do formulário aparecerão aqui.</p>
+            <h3>Nenhuma mensagem recebida.</h3>
           </div>
         ) : (
           data?.messages.map((message) => (
@@ -112,8 +111,7 @@ export function Dashboard({ email }: { email: string }) {
           <span>Escolha até 6 projetos</span>
         </div>
         <p className="muted">
-          A seleção é salva no banco e vale para todos os visitantes. A home atualiza em até 1
-          minuto.
+          As alterações podem levar até 1 minuto para aparecer na página inicial.
         </p>
         {projectsLoading ? (
           <p role="status">Carregando repositórios…</p>

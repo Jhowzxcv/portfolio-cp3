@@ -11,15 +11,15 @@ export const metadata: Metadata = {
     template: '%s | Jhonathan Dourado',
   },
   description:
-    'Portfólio de Jhonathan Dourado. Desenvolvedor full stack com foco em Java, Spring Boot e aplicações que resolvem problemas reais.',
+    'Jhonathan Dourado. Desenvolvedor full stack com foco em Java e Spring Boot. Projetos, experiência e contato.',
 };
 
 const themeScript =
-  "try{document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')||'dark'}catch(e){}";
+  "try{document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')||'light'}catch(e){}";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" data-theme="dark" suppressHydrationWarning>
+    <html lang="pt-BR" data-theme="light" suppressHydrationWarning>
       <head>
         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: script estático sem dados externos evita flash de tema. */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
@@ -30,19 +30,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <ProjectsProvider>
           <Header />
-          {children}
-          <footer className="footer container">
-            <Link className="wordmark" href="/">
-              jd<span>_</span>
-            </Link>
-            <span>Jhonathan Dourado · Código com propósito.</span>
-            <div>
-              <a href="https://github.com/Jhowzxcv" target="_blank" rel="noreferrer">
-                GitHub ↗
-              </a>
-              <Link href="/login">Área do dono</Link>
-            </div>
-          </footer>
+          <div className="site-content">
+            {children}
+            <footer className="footer">
+              <span>Jhonathan Dourado</span>
+              <div>
+                <a href="https://github.com/Jhowzxcv" target="_blank" rel="noreferrer">
+                  GitHub ↗
+                </a>
+                <Link href="/login">Área do dono</Link>
+              </div>
+            </footer>
+          </div>
         </ProjectsProvider>
       </body>
     </html>

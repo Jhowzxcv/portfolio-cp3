@@ -1,40 +1,39 @@
 .login-page {
-  min-height: 70vh;
+  min-height: calc(100vh - 155px);
   display: grid;
   place-items: center;
-  padding-block: 60px;
+  padding-block: 55px;
 }
 .login-card {
-  width: min(420px, 100%);
-  background: var(--surface);
+  width: min(405px, 100%);
   border: 1px solid var(--border);
-  padding: 36px;
-  border-radius: 12px;
+  padding: 32px;
+  border-radius: 5px;
+  background: var(--bg);
 }
 .login-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--surface-raised);
   color: var(--accent);
-  border: 1px solid var(--border);
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  margin-bottom: 25px;
+  margin-bottom: 19px;
+}
+.eyebrow {
+  font-size: 10px;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 12px;
 }
 .login-card h1 {
-  font-size: 30px;
+  font-size: 27px;
 }
 .login-card > p {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--muted);
-  margin-block: 17px 27px;
+  margin-block: 12px 25px;
 }
 .login-card .button {
   width: 100%;
 }
 .dashboard-page {
-  padding-block: 50px 80px;
+  padding-block: 42px 70px;
   min-height: 70vh;
 }
 .dashboard-heading {
@@ -44,12 +43,12 @@
   gap: 20px;
 }
 .dashboard-heading h1 {
-  font-size: 36px;
+  font-size: 30px;
 }
 .dashboard-section {
-  margin-top: 45px;
+  margin-top: 35px;
   border-top: 1px solid var(--border);
-  padding-top: 30px;
+  padding-top: 26px;
 }
 .dashboard-section-heading {
   display: flex;
@@ -61,19 +60,22 @@
 .dashboard-section-heading h2 {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 25px;
+  gap: 10px;
+  font-size: 20px;
+}
+.dashboard-section-heading h2 svg {
+  width: 18px;
+  color: var(--muted);
 }
 .dashboard-section-heading > span {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--muted);
 }
 .message-card {
-  padding: 25px;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  margin-bottom: 15px;
-  background: var(--surface);
+  border-radius: 4px;
+  padding: 22px;
+  margin-bottom: 14px;
 }
 .message-card.responded {
   border-left: 3px solid var(--accent);
@@ -85,33 +87,32 @@
   gap: 20px;
 }
 .message-heading h3 {
-  font-size: 18px;
-  letter-spacing: -0.02em;
+  font-size: 15px;
 }
 .message-heading a,
 .message-heading time {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--muted);
   overflow-wrap: anywhere;
 }
 .message-text {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  margin-block: 20px;
-  font-size: 14px;
+  margin-block: 18px;
+  font-size: 13px;
   line-height: 1.8;
 }
 .message-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 .message-actions .button {
-  font-size: 11px;
-  min-height: 38px;
-  padding: 8px 12px;
-  gap: 7px;
+  font-size: 10px;
+  min-height: 33px;
+  padding: 6px 10px;
+  gap: 6px;
 }
 .email-state {
   font-size: 10px;
@@ -119,13 +120,13 @@
   margin-right: auto;
 }
 .muted {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--muted);
   margin-bottom: 20px;
 }
 .featured-options {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 23px;
 }
@@ -134,10 +135,10 @@
   align-items: center;
   gap: 8px;
   border: 1px solid var(--border);
-  background: var(--surface);
-  padding: 13px;
-  border-radius: 6px;
-  font-size: 12px;
+  background: var(--bg);
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 11px;
   min-width: 0;
 }
 .featured-option > span {
@@ -162,24 +163,24 @@
   color: inherit;
   text-decoration: underline;
 }
-.login-card .field input {
-  background: var(--bg);
-}
-@media (max-width: 760px) {
+@media (max-width: 600px) {
+  .login-page {
+    padding-block: 35px;
+  }
   .login-card {
-    padding: 27px;
+    padding: 24px;
   }
   .dashboard-heading {
     align-items: flex-start;
   }
   .dashboard-heading h1 {
-    font-size: 29px;
+    font-size: 25px;
   }
   .dashboard-section-heading {
     align-items: flex-start;
   }
   .dashboard-section-heading h2 {
-    font-size: 21px;
+    font-size: 18px;
   }
   .dashboard-section-heading > span {
     font-size: 9px;
@@ -188,11 +189,11 @@
     grid-template-columns: 1fr;
   }
   .message-card {
-    padding: 18px;
+    padding: 17px;
   }
   .message-heading {
     flex-direction: column;
-    gap: 8px;
+    gap: 7px;
   }
   .message-actions {
     gap: 8px;

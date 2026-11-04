@@ -56,7 +56,7 @@ supabase/               schema e função transacional
 .codex/                 configuração opcional de MCP
 ```
 
-Chamadas de banco e segredos permanecem em services e handlers de servidor. O contexto React guarda os projetos entre rotas, sem nova consulta ao navegar; atualizações do navegador fazem uma consulta à API da aplicação, enquanto o cache do servidor reduz acessos ao GitHub. O dashboard tem seu próprio bundle de rota e não é importado pela home. Capas de projeto são desenhadas em CSS, sem imagens raster grandes ou dependência de WebGL.
+Chamadas de banco e segredos permanecem em services e handlers de servidor. O contexto React guarda os projetos entre rotas, sem nova consulta ao navegar; atualizações do navegador fazem uma consulta à API da aplicação, enquanto o cache do servidor reduz acessos ao GitHub. O dashboard tem seu próprio bundle de rota e não é importado pela home. A interface segue a organização de documentações técnicas: índice lateral, conteúdo central, links de seção e cards compactos de repositórios. No celular, a navegação abre em um dialog nativo. O tema padrão é claro; a preferência do visitante é preservada. Não há imagens grandes nem dependência de WebGL.
 
 ## Segurança e comportamento de falha
 
