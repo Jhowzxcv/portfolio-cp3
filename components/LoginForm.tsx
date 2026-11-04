@@ -38,9 +38,8 @@ export function LoginForm() {
       <div className="login-icon">
         <LockKeyhole size={24} />
       </div>
-      <span className="eyebrow">ACESSO RESTRITO</span>
-      <h1>Bem-vindo de volta.</h1>
-      <p>Entre para cuidar das mensagens e dos destaques do portfólio.</p>
+      <h1>Área do dono</h1>
+      <p>Acesso às mensagens e aos projetos em destaque.</p>
       <form onSubmit={submit}>
         <div className="field">
           <label htmlFor="login-email">E-mail</label>

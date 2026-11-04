@@ -1,5 +1,19 @@
 # Validação executada
 
+## Redesign com interface de documentação — 03/11/2026
+
+Interface refeita na branch `feature/design-documentacao`: índice lateral, navegação móvel em dialog, índice da página, cards compactos e títulos descritivos. Home, projeto, login, dashboard e páginas de erro seguem o mesmo estilo. Tema padrão claro, preservando a escolha salva do visitante.
+
+- Biome, TypeScript, 16 testes Vitest e build: aprovados.
+- Playwright: 20 testes aprovados em execução com servidor reiniciado após o build. Inclui navegação por seções, menu móvel com Escape/retorno de foco e busca sem novas consultas.
+- Lighthouse mobile local na versão final: performance 100, acessibilidade 100, boas práticas 100, SEO 100; CLS 0.
+- Home inspecionada em desktop e celular; página de projeto e login também inspecionados em tema escuro.
+- As medições de produção abaixo registram a versão anterior à revisão visual. A medição da nova publicação é salva em relatório separado na entrega.
+
+Os limites de configuração de Supabase e Resend permanecem os mesmos. Esta revisão altera apresentação e navegação.
+
+## Verificações da entrega inicial
+
 Data: 03/11/2026, horário de São Paulo. Node.js 24.14.0, Windows, Next.js 16.4.5, build de produção.
 
 | Verificação                              | Resultado observado                                                                                         |
@@ -7,7 +21,7 @@ Data: 03/11/2026, horário de São Paulo. Node.js 24.14.0, Windows, Next.js 16.4
 | Biome lint/formatação                    | Aprovado, sem erros                                                                                         |
 | TypeScript                               | Aprovado, sem erros                                                                                         |
 | Vitest                                   | 16 testes aprovados em 3 arquivos                                                                           |
-| Playwright                               | 16 testes aprovados: 8 cenários em desktop e em mobile                                                      |
+| Playwright                               | 20 testes aprovados: 10 cenários em desktop e em mobile                                                     |
 | Build Next.js                            | Aprovado, rotas públicas e privadas geradas                                                                 |
 | npm audit, dependências de produção      | Nenhuma vulnerabilidade reportada                                                                           |
 | Validação da skill por quick_validate.py | Skill is valid                                                                                              |

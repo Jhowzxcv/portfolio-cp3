@@ -68,7 +68,7 @@ export function ContactForm() {
               type={field === 'email' ? 'email' : 'text'}
               autoComplete={field}
               maxLength={field === 'name' ? 100 : 254}
-              placeholder={field === 'name' ? 'Como posso te chamar?' : 'voce@exemplo.com'}
+              placeholder={field === 'name' ? 'Nome completo' : 'voce@exemplo.com'}
               aria-invalid={!!errors[field]}
               aria-describedby={errors[field] ? `${field}-error` : undefined}
               required
@@ -82,14 +82,14 @@ export function ContactForm() {
         ))}
       </div>
       <div className="field">
-        <label htmlFor="message">O que vamos construir?</label>
+        <label htmlFor="message">Mensagem</label>
         <textarea
           id="message"
           name="message"
           rows={4}
           minLength={20}
           maxLength={5000}
-          placeholder="Me conte sobre sua ideia, projeto ou oportunidade…"
+          placeholder="Escreva sua mensagem"
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? 'message-error' : 'message-hint'}
           required

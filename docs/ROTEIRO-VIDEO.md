@@ -26,7 +26,7 @@ Tela: `docs/DECISOES.md`. Escolha linhas da tabela, sem ler todas.
 
 “Comparei Next.js com React/Vite mais um roteador e uma API separada. Escolhi Next para ter páginas e funções de servidor no mesmo deploy Vercel. Aceitei aprender as regras de componentes cliente e servidor.”
 
-“Para estilo, considerei Tailwind e uma biblioteca pronta. Usei CSS próprio para manter uma identidade visual simples e evitar mais dependências visuais. Em troca, fiquei responsável por responsividade, foco e contraste. O elemento da home é CSS, porque o 3D era opcional e priorizei performance mobile.”
+“Para estilo, considerei Tailwind e uma biblioteca pronta. Usei CSS próprio e uma organização inspirada nas documentações de Java, Spring, Docker e Kubernetes: navegação lateral, conteúdo central e seções com títulos diretos. Em troca, fiquei responsável por responsividade, foco e contraste. No celular, o menu usa dialog nativo. Não incluí uma cena 3D porque ela era opcional e priorizei a leitura e a performance.”
 
 “Para dados, considerei Firebase e um backend próprio. Supabase reuniu PostgreSQL e autenticação. Perco independência de fornecedor e preciso configurar o serviço. O Resend foi escolhido para enviar pelo servidor, mantendo a chave privada fora do navegador. A mensagem no banco e o e-mail são operações separadas; por isso tratei falha e reenvio.”
 

@@ -1,155 +1,150 @@
-import { ArrowDown, ArrowUpRight, Code2, Database, Layers, Terminal } from 'lucide-react';
+import { ArrowUpRight, ChevronRight, MapPin } from 'lucide-react';
 import { ContactForm } from '@/components/ContactForm';
 import { Projects } from '@/components/Projects';
+import { TableOfContents } from '@/components/TableOfContents';
 
 export default function Home() {
   return (
-    <main id="main">
-      <section className="hero container">
-        <div className="hero-copy">
-          <div className="availability">
-            <span /> DESENVOLVEDOR FULL STACK
-          </div>
-          <h1>
-            Construo software.
-            <br />
-            <span>Resolvo problemas.</span>
-          </h1>
+    <main id="main" className="docs-page">
+      <article className="doc-article">
+        <nav aria-label="Localização" className="breadcrumb">
+          <span>Portfólio</span>
+          <ChevronRight size={13} />
+          <span>Visão geral</span>
+        </nav>
+        <section id="visao-geral" className="overview">
+          <div className="document-label">Desenvolvedor full stack</div>
+          <h1>Jhonathan Dourado</h1>
+          <p className="lead">Desenvolvimento de sistemas com foco em Java e Spring Boot.</p>
           <p>
-            Sou Jhonathan Dourado. Conecto interfaces, APIs e dados para transformar problemas reais
-            em aplicações que fazem sentido.
+            Sou técnico em Desenvolvimento de Sistemas pela ETEC e estudante de Engenharia de
+            Software na FIAP. Trabalhei com sistemas de telecomunicações, APIs, interfaces e bancos
+            de dados na Virtsel Tecnologia.
           </p>
-          <div className="hero-actions">
-            <a href="#projetos" className="button primary">
-              Conheça meu trabalho <ArrowDown size={17} />
+          <div className="profile-links">
+            <span>
+              <MapPin size={14} /> São Paulo, Brasil
+            </span>
+            <a href="https://github.com/Jhowzxcv" target="_blank" rel="noreferrer">
+              GitHub <ArrowUpRight size={14} />
             </a>
             <a
               href="https://www.linkedin.com/in/jhonathan-dourado-846239324/"
               target="_blank"
               rel="noreferrer"
-              className="text-link"
             >
-              LinkedIn <ArrowUpRight size={17} />
+              LinkedIn <ArrowUpRight size={14} />
             </a>
           </div>
-          <div className="hero-caption">
-            <span>São Paulo, Brasil</span>
-            <span className="tiny-dot" />
-            Java no backend. Curiosidade em tudo.
-          </div>
-        </div>
-        <div
-          className="hero-art"
-          role="img"
-          aria-label="Diagrama: uma interface se conecta à API e ao banco de dados"
-        >
-          <div className="art-top">
-            <span className="status-led" /> SYSTEM THINKING <span>v.01</span>
-          </div>
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="art-core">
-            <Code2 size={44} strokeWidth={1.4} />
-            <span>ideia → solução</span>
-          </div>
-          <div className="art-node node-ui">
-            <Layers size={20} />
-            <span>interface</span>
-          </div>
-          <div className="art-node node-api">
-            <Terminal size={20} />
-            <span>API</span>
-          </div>
-          <div className="art-node node-data">
-            <Database size={20} />
-            <span>dados</span>
-          </div>
-          <div className="art-bottom">
-            <span>01 IDEIA</span>
-            <span className="art-line" />
-            <span>02 CÓDIGO</span>
-            <span className="art-line" />
-            <span>03 IMPACTO</span>
-          </div>
-        </div>
-      </section>
-      <div className="tech-strip">
-        <div className="container">
-          <span>MINHA CAIXA DE FERRAMENTAS</span>
-          <p>
-            Java <i>/</i> Spring Boot <i>/</i> React <i>/</i> TypeScript <i>/</i> SQL <i>/</i> Git
-          </p>
-        </div>
-      </div>
-      <Projects />
-      <section id="sobre" className="section about-section container">
-        <div className="about-intro">
-          <span className="eyebrow">02 / QUEM ESTÁ POR TRÁS</span>
+        </section>
+        <Projects />
+        <section id="experiencia" className="doc-section">
           <h2>
-            Entender primeiro.
-            <br />
-            <span>Construir melhor.</span>
+            Experiência
+            <a className="heading-anchor" href="#experiencia" aria-label="Link para Experiência">
+              #
+            </a>
+          </h2>
+          <div className="experience-heading">
+            <div>
+              <h3>Virtsel Tecnologia</h3>
+              <p>Desenvolvimento de sistemas</p>
+            </div>
+            <span>mar — out 2026</span>
+          </div>
+          <p>Atuei em sistemas para operações de telecomunicações, incluindo:</p>
+          <ul className="experience-list">
+            <li>
+              <strong>Fidere 2.</strong> Desenvolvimento da nova versão, com frontend, backend e
+              refatoração do banco de dados.
+            </li>
+            <li>
+              <strong>Fidere.</strong> Fluxos operacionais, painéis, mapas, relatórios e integrações
+              com o Oracle Field Service Cloud.
+            </li>
+            <li>
+              <strong>Fiber Cut.</strong> Integração com equipamentos de monitoramento de fibra
+              óptica, testes remotos e visualização de rotas e alarmes.
+            </li>
+          </ul>
+          <h3 className="subsection-heading">Formação e estudos</h3>
+          <dl className="education-list">
+            <div>
+              <dt>FIAP</dt>
+              <dd>Engenharia de Software · em andamento</dd>
+            </div>
+            <div>
+              <dt>ETEC</dt>
+              <dd>Técnico em Desenvolvimento de Sistemas</dd>
+            </div>
+            <div>
+              <dt>Alura</dt>
+              <dd>Estudos de Java, Spring Boot e desenvolvimento web</dd>
+            </div>
+          </dl>
+        </section>
+        <section id="tecnologias" className="doc-section">
+          <h2>
+            Tecnologias
+            <a className="heading-anchor" href="#tecnologias" aria-label="Link para Tecnologias">
+              #
+            </a>
+          </h2>
+          <div className="table-scroll">
+            <table className="technology-table">
+              <thead>
+                <tr>
+                  <th scope="col">Área</th>
+                  <th scope="col">Tecnologias</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Backend</th>
+                  <td>Java, Spring Boot, Spring Security, Spring Data JPA, Hibernate</td>
+                </tr>
+                <tr>
+                  <th scope="row">Frontend</th>
+                  <td>React, Angular, Next.js, TypeScript, JavaScript, HTML, CSS</td>
+                </tr>
+                <tr>
+                  <th scope="row">Dados</th>
+                  <td>SQL Server, PostgreSQL, MySQL</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ferramentas</th>
+                  <td>Git, Docker, Maven, Gradle, Postman, Swagger/OpenAPI</td>
+                </tr>
+                <tr>
+                  <th scope="row">Testes</th>
+                  <td>JUnit, Mockito</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section id="contato" className="doc-section contact-section">
+          <h2>
+            Contato
+            <a className="heading-anchor" href="#contato" aria-label="Link para Contato">
+              #
+            </a>
           </h2>
           <p>
-            Gosto de investigar a causa de um problema e acompanhar a solução até ela funcionar para
-            quem vai usar.
+            Envie uma mensagem pelo formulário ou pelo{' '}
+            <a
+              href="https://www.linkedin.com/in/jhonathan-dourado-846239324/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn ↗
+            </a>
+            .
           </p>
-          <div className="about-tags">
-            <span>Backend Java</span>
-            <span>Engenharia de Software</span>
-            <span>São Paulo</span>
-          </div>
-        </div>
-        <div className="about-body">
-          <p>
-            Sou técnico em Desenvolvimento de Sistemas pela ETEC e estudante de Engenharia de
-            Software na FIAP. Meu foco é backend Java, sem perder de vista o que acontece na
-            interface e no banco.
-          </p>
-          <div className="experience">
-            <div className="experience-date">2026 · MAR — OUT</div>
-            <h3>Desenvolvimento de sistemas</h3>
-            <span>Virtsel Tecnologia</span>
-            <p>
-              Trabalhei em sistemas para operações de telecomunicações, com interfaces, APIs, mapas,
-              relatórios e integrações. No Fidere 2, desenvolvi a nova versão e refatorei o banco de
-              dados.
-            </p>
-          </div>
-          <div className="experience">
-            <div className="experience-date">FORMAÇÃO & PROJETOS</div>
-            <h3>Aprender construindo</h3>
-            <span>FIAP · ETEC · Alura</span>
-            <p>
-              Do backend do Ristretto, meu TCC na ETEC, aos projetos em React: uso cada aplicação
-              para aprofundar arquitetura, testes e decisões de engenharia.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section id="contato" className="section contact-section container">
-        <div className="contact-copy">
-          <span className="eyebrow">03 / PRÓXIMA CONVERSA</span>
-          <h2>
-            Uma boa ideia
-            <br />
-            começa com um <span>oi.</span>
-          </h2>
-          <p>
-            Tem um projeto, uma oportunidade ou quer trocar uma ideia sobre tecnologia? Vamos
-            conversar.
-          </p>
-          <a
-            href="https://www.linkedin.com/in/jhonathan-dourado-846239324/"
-            className="text-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Também estou no LinkedIn <ArrowUpRight size={16} />
-          </a>
-        </div>
-        <ContactForm />
-      </section>
+          <ContactForm />
+        </section>
+      </article>
+      <TableOfContents />
     </main>
   );
 }

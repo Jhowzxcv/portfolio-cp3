@@ -44,7 +44,7 @@ test('validação específica do formulário evita envio inválido', async ({ pa
   await page.goto('/#contato');
   await page.getByLabel('Seu nome').fill('A');
   await page.getByLabel('Seu e-mail').fill('invalido');
-  await page.getByLabel('O que vamos construir?').fill('curta');
+  await page.getByLabel('Mensagem', { exact: true }).fill('curta');
   await page.getByRole('button', { name: 'Enviar mensagem' }).click();
   await expect(page.getByText('Informe um e-mail válido.', { exact: true })).toBeVisible();
   await expect(page.getByText('Escreva uma mensagem com pelo menos 20 caracteres.')).toBeVisible();
@@ -52,9 +52,9 @@ test('validação específica do formulário evita envio inválido', async ({ pa
 });
 test('tema persiste e layout não transborda', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('button', { name: 'Ativar tema claro' }).click();
+  await page.getByRole('button', { name: 'Ativar tema escuro' }).click();
   await page.reload();
-  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
     true,
   );
@@ -62,9 +62,7 @@ test('tema persiste e layout não transborda', async ({ page }) => {
 test('rota inexistente mostra página amigável', async ({ page }) => {
   const response = await page.goto('/pagina-que-nao-existe');
   expect(response?.status()).toBe(404);
-  await expect(
-    page.getByRole('heading', { name: 'Essa rota ainda não foi construída.' }),
-  ).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Página não encontrada.' })).toBeVisible();
 });
 
 test('dashboard sem login redireciona e API privada rejeita leitura e alteração', async ({
@@ -73,7 +71,7 @@ test('dashboard sem login redireciona e API privada rejeita leitura e alteraçã
 }) => {
   await page.goto('/dashboard');
   await expect(page).toHaveURL(/\/login$/);
-  await expect(page.getByRole('heading', { name: 'Bem-vindo de volta.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Área do dono', exact: true })).toBeVisible();
   expect((await request.get('/api/admin')).status()).toBe(401);
   expect(
     (await request.patch('/api/admin', { data: { action: 'feature', ids: [] } })).status(),
@@ -98,7 +96,7 @@ test('API indisponível mostra erro recuperável e lista vazia tem feedback pró
     route.fulfill({ json: { projects: [], featured: [] } }),
   );
   await page.getByRole('button', { name: 'Tentar novamente' }).click();
-  await expect(page.getByRole('heading', { name: 'Nenhum projeto por aqui.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Nenhum projeto encontrado.' })).toBeVisible();
 });
 test('botão bloqueia envio duplicado e sucesso limpa os campos', async ({ page }) => {
   let requests = 0;
@@ -115,7 +113,7 @@ test('botão bloqueia envio duplicado e sucesso limpa os campos', async ({ page 
   await page.getByLabel('Seu nome').fill('Pessoa Teste');
   await page.getByLabel('Seu e-mail').fill('teste@example.com');
   await page
-    .getByLabel('O que vamos construir?')
+    .getByLabel('Mensagem', { exact: true })
     .fill('Gostaria de conversar sobre um projeto de desenvolvimento.');
   await page.getByRole('button', { name: 'Enviar mensagem' }).click();
   await expect(page.getByRole('button', { name: 'Enviando' })).toBeDisabled();
@@ -123,4 +121,44 @@ test('botão bloqueia envio duplicado e sucesso limpa os campos', async ({ page 
   release();
   await expect(page.getByText('Mensagem recebida!', { exact: true })).toBeVisible();
   await expect(page.getByLabel('Seu nome')).toHaveValue('');
+});
+
+test('índice navega até as seções e menu móvel fecha com Escape', async ({ page, isMobile }) => {
+  await page.goto('/');
+  if (isMobile) {
+    await page.getByRole('button', { name: 'Abrir navegação' }).click();
+    await expect(page.getByRole('dialog', { name: 'Navegação', exact: true })).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('dialog')).not.toBeVisible();
+    await expect(page.getByRole('button', { name: 'Abrir navegação' })).toBeFocused();
+    await page.getByRole('button', { name: 'Abrir navegação' }).click();
+    await page
+      .getByRole('navigation', { name: 'Navegação móvel' })
+      .getByRole('link', { name: 'Tecnologias', exact: true })
+      .click();
+    await expect(page.getByRole('dialog')).not.toBeVisible();
+  } else {
+    await page
+      .getByRole('navigation', { name: 'Navegação lateral' })
+      .getByRole('link', { name: 'Tecnologias', exact: true })
+      .click();
+  }
+  await expect(page).toHaveURL(/#tecnologias$/);
+  await expect(page.getByRole('heading', { name: /^Tecnologias/ })).toBeInViewport();
+});
+
+test('busca filtra repositórios sem nova requisição e permite limpar o filtro', async ({
+  page,
+}) => {
+  let requests = 0;
+  page.on('request', (request) => {
+    if (new URL(request.url()).pathname === '/api/projects') requests++;
+  });
+  await page.goto('/');
+  await expect(page.getByRole('heading', { name: 'meu-projeto', exact: true })).toBeVisible();
+  await page.getByRole('searchbox', { name: 'Buscar projetos', exact: true }).fill('inexistente');
+  await expect(page.getByRole('heading', { name: 'Nenhum projeto encontrado.' })).toBeVisible();
+  await page.getByRole('button', { name: 'Ver todos os projetos', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'meu-projeto', exact: true })).toBeVisible();
+  expect(requests).toBe(1);
 });

@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowDown, ArrowUpRight, RotateCcw, Search } from 'lucide-react';
+import { RotateCcw, Search } from 'lucide-react';
 import { useState } from 'react';
 import { useProjects } from '@/hooks/useProjects';
 import { ProjectCard } from './ProjectCard';
@@ -19,33 +19,31 @@ export function Projects() {
         ) || []
       : selected;
   return (
-    <section id="projetos" className="section container">
-      <div className="section-heading">
-        <div>
-          <span className="eyebrow">01 / TRABALHOS SELECIONADOS</span>
-          <h2>
-            Ideias que viraram código<span>.</span>
-          </h2>
-        </div>
-        <a
-          className="text-link"
-          href="https://github.com/Jhowzxcv"
-          target="_blank"
-          rel="noreferrer"
-        >
-          GitHub <ArrowUpRight size={17} />
+    <section id="projetos" className="doc-section">
+      <h2>
+        Projetos
+        <a className="heading-anchor" href="#projetos" aria-label="Link para Projetos">
+          #
         </a>
-      </div>
+      </h2>
       <div className="projects-toolbar">
-        <p>Projetos reais, direto dos meus repositórios.</p>
+        <fieldset className="project-filters">
+          <legend className="sr-only">Exibir projetos</legend>
+          <button type="button" aria-pressed={!showAll} onClick={() => setShowAll(false)}>
+            Destaques
+          </button>
+          <button type="button" aria-pressed={showAll} onClick={() => setShowAll(true)}>
+            Todos {data && <span>{data.projects.length}</span>}
+          </button>
+        </fieldset>
         <label className="search">
-          <Search size={16} />
+          <Search size={15} />
           <span className="sr-only">Buscar projetos</span>
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Buscar projeto ou tecnologia"
+            placeholder="Buscar projetos"
           />
         </label>
       </div>
@@ -56,9 +54,8 @@ export function Projects() {
           aria-label="Carregando projetos"
           aria-busy="true"
         >
-          {[0, 1, 2].map((id) => (
+          {[0, 1, 2, 3].map((id) => (
             <div className="skeleton-card" key={id}>
-              <div className="skeleton-cover" />
               <div className="skeleton-line" />
               <div className="skeleton-line short" />
             </div>
@@ -66,19 +63,19 @@ export function Projects() {
         </div>
       ) : error ? (
         <div className="empty-state" role="alert">
-          <h3>Os projetos não carregaram.</h3>
+          <h3>Não foi possível carregar os projetos.</h3>
           <p>{error}</p>
           <button type="button" className="button secondary" onClick={retry}>
-            <RotateCcw size={16} /> Tentar novamente
+            <RotateCcw size={15} /> Tentar novamente
           </button>
         </div>
       ) : visible.length === 0 ? (
         <div className="empty-state">
-          <h3>Nenhum projeto por aqui.</h3>
+          <h3>Nenhum projeto encontrado.</h3>
           <p>
             {query
               ? 'Tente outro nome ou tecnologia.'
-              : 'Nenhum repositório foi selecionado para destaque.'}
+              : 'Nenhum projeto selecionado para destaque.'}
           </p>
           <button
             type="button"
@@ -93,19 +90,9 @@ export function Projects() {
         </div>
       ) : (
         <div className="project-grid">
-          {visible.map((project, index) => (
-            <ProjectCard project={project} index={index} key={project.id} />
+          {visible.map((project) => (
+            <ProjectCard project={project} key={project.id} />
           ))}
-        </div>
-      )}
-      {!loading && !error && !query && (
-        <div className="projects-more">
-          <button type="button" className="button secondary" onClick={() => setShowAll(!showAll)}>
-            {showAll
-              ? 'Ver destaques'
-              : `Explorar todos os projetos (${data?.projects.length || 0})`}
-            <ArrowDown size={16} className={showAll ? 'rotate' : ''} />
-          </button>
         </div>
       )}
     </section>
